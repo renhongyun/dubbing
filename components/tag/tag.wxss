@@ -1,0 +1,28 @@
+/* components/tag/tag.wxss */
+.wrapper {
+  display: flex;
+  color: #fff;
+  /* flex-shrink: 0;
+  flex-wrap: wrap; */
+  width: 90%;
+  margin: 0 auto;
+}
+.sort {
+  flex-shrink: 0;
+
+}
+.tags {
+  display: flex;
+  background-color:rgb(0,0,0,0);
+  border-radius: 20rpx;
+  border: 3rpx solid #fff;
+  padding: 2rpx 18rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+  flex-shrink: 0;
+}
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}

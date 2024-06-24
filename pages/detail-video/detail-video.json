@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "author-bar": "/components/author-bar/author-bar"
+  },
+  "navigationBarTitleText": "视频播放"
+}

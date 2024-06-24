@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/audiolist/audiolist",
+    "pages/home/home",
+    "pages/videolist/videolist",
+    "pages/index/index",
+    "pages/detail-video/detail-video"
+    
+  ],
+  "usingComponents": {
+    "background": "./components/background/background",
+    "round-background": "./components/round-background/round-background"
+  },
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#f9dc17"
+
+
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "globalShare": true
+}

@@ -1,0 +1,10 @@
+<!--components/author-bar/author-bar.wxml-->
+<view class="box">
+  <view class="name">
+{{name}}
+  </view>
+  <view class="more">
+  <text class="tap">查看此老师其他样音</text>
+  <image src="../../assets/img/right.png" mode="" class="right"/>
+  </view>
+</view>

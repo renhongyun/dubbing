@@ -1,0 +1,2 @@
+<view class="box" style="height: {{height}}px; top:{{top}}px">
+</view>

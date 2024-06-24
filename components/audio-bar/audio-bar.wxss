@@ -1,0 +1,55 @@
+.box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 86%;
+  margin: 0 auto;
+  padding: 20rpx 30rpx;
+  border-radius: 18rpx;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.box .info {
+  width: 63%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.box .info .title {
+  font-weight: 700;
+  font-size: 30rpx;
+}
+.box .info .more {
+  font-size: 24rpx;
+  color: #c7c6cb;
+  margin-top: 10rpx;
+}
+.box .buttons .play {
+  width: 80rpx;
+  height: 80rpx;
+  position: relative;
+  right: 16rpx;
+  bottom: 10rpx;
+}
+.box .buttons .share {
+  width: 110rpx;
+  height: 110rpx;
+  position: relative;
+  top: 6rpx;
+  left: 8rpx;
+}
+.recommandBox {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  top: 0;
+  left: 0;
+}
+.recommand {
+  width: 60rpx;
+  height: 60rpx;
+}
+.notShow {
+  display: none;
+}

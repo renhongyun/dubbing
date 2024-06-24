@@ -1,0 +1,27 @@
+/* components/author-bar/author-bar.wxss */
+.box {
+  display: flex;
+  background-color: #ffffff;
+  height: 88rpx;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16rpx;
+  width: 89%;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+.box .more {
+  font-size: small;
+  color: #c7c6cb;
+  text-align: center;
+}
+.box .more .tap {
+  position: relative;
+  bottom: 5rpx
+}
+.box .more .right {
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 4.6rpx
+}

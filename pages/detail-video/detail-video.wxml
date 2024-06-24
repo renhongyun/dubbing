@@ -1,0 +1,10 @@
+<!-- <view>{{id}}</view> -->
+<video src="{{mvUrl}}" class="video" danmu-list="{{danmuList}}" referrer-policy="origin"></video>
+
+<view class="title">{{mvInfo.name}}</view>
+<author-bar name="{{mvInfo.artistName}}"></author-bar>
+
+<!-- <view class="related-video">
+  <block wx:for="mvRelated" wx:key>
+  </block>
+</view> -->

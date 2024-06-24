@@ -1,0 +1,11 @@
+/* pages/detail-video/detail-video.wxss */
+page {
+  background-color: #f7f6fb;
+}
+.video {
+  width: 100%;
+}
+.title {
+  padding: 30rpx 30rpx;
+  font-size: larger;
+}

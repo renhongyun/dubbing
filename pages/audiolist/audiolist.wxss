@@ -1,0 +1,7 @@
+/* pages/audiolist/audiolist.wxss */.icon {
+  font-size: 50px;
+}
+.recommend-ist {
+  position: relative;
+  top: 40px;
+}
