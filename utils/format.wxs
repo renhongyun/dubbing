@@ -32,7 +32,7 @@ function formatTime(time) {
   return padLeft(minute) + ":" + padLeft(second)
 }
 
-// 必须导出后, 才能被其他地方调用: 必须使用CommonJS导出
+// 必须导出后, 才能被其他地方调用: 使用CommonJS导出
 module.exports = {
   formatCount: formatCount,
   formatTime: formatTime

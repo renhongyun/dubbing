@@ -30,7 +30,7 @@
 }
 
 .swiper .indicator-dots .swiper-pagination-bullet {
-  background: rgba(0, 0, 0, 0.3); /* 根据需要调整颜色和透明度 */
+  background: rgba(0, 0, 0, 0.3);
   width: 8rpx;
   height: 8rpx;
   border-radius: 50%;

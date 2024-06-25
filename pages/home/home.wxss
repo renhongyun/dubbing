@@ -17,7 +17,7 @@ page {
   height: 260rpx;
   width: 42%;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 .cover {
   width: 100%;
@@ -33,7 +33,7 @@ page {
   font-size: 16px;
   letter-spacing: 8rpx;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
 }
 .play {
   position: absolute;
@@ -52,7 +52,7 @@ page {
   background-color: #fff;
   text-align: center;
   line-height: 66rpx;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .tag-container {
   margin: 0 auto;

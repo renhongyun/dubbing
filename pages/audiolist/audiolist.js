@@ -11,7 +11,7 @@ Page({
     tag2: [],
     tag3: [],
     authorList: [],
-    filters: { categoryId: 1 }, // 默认的分类 ID
+    filters: { categoryId: 1 }, // 默认的分类
     sex: [
       { id: 1, name: "男声", selected: false },
       { id: 0, name: "女声", selected: false }
