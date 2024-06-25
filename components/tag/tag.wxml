@@ -1,11 +1,13 @@
 <view class="wrapper">
-  <view class="sort">
+<!-- <block wx:if="{{tagList}}"> -->
+  <view class="sort" >
     {{sort}}：
   </view>
+<!-- </block> -->
   <view class="tags-container">
   <block wx:for="{{tagList}}">
     <view class="tags">
-      {{item}}
+      {{item.name}}
     </view>
   </block>
 </view>

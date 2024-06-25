@@ -1,13 +1,13 @@
 <banner></banner>
 <view class="box">
   <view class="wx">
-    <image src="../../assets/img/wxicon.png" mode="" class="wxicon" />
+    <image src="../../assets/img/icon.png" mode="" class="wxicon" />
     <text selectable>wx:111111</text>
     <text class="tip">（长按复制）</text>
   </view>
   <view class="cover-box">
-    <block wx:for="{{categoryList}}">
-      <view class="image-box">
+    <block wx:for="{{categoryList}}" wx:key="id">
+      <view class="image-box" bindtap="navigateToAudioList" data-id="{{item.id}}">
         <image src="{{item.img}}" mode="widthFix" class="cover" />
         <view class="title">
           {{item.name}}
@@ -18,18 +18,15 @@
       </view>
     </block>
   </view>
-
-
   <view class="tag-container">
     <block wx:for="{{categoryTags}}">
       <view class="bar-box">
-        <block wx:for="{{item.tags}}">
-          <view class="bar">
+        <block wx:for="{{item.tags}}" wx:key="id">
+          <view class="bar" bindtap="navigateToAudioListWithTag" data-type="{{item.type}}" data-tagid="{{item.id}}">
             {{item.name}}
           </view>
         </block>
       </view>
     </block>
   </view>
-
 </view>

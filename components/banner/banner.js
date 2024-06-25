@@ -13,7 +13,7 @@ Component({
       this.setData({
         banners: res
       });
-      console.log(this.data.banners);
+      // console.log(this.data.banners);
     }
   },
 

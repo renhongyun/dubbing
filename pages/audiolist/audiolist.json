@@ -6,7 +6,5 @@
     "audio-bar": "/components/audio-bar/audio-bar",
     "banner": "/components/banner/banner",
     "tag":"/components/tag/tag"
-  },
-  "enableShareAppMessage": true,
-  "enableShareTimeline": true
+  }
 }

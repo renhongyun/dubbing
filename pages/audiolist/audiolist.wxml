@@ -1,9 +1,17 @@
 <background></background>
 <banner></banner>
 <background></background>
-<tag sort="情绪" tagList="{{list}}"></tag>
-<tag sort="类型" tagList="{{list2}}"></tag>
-<round-background height="{{bgHeight}}" top="220" height="500"></round-background>
+
+<block wx:if="{{tag1.length > 0}}">
+  <tag sort="情绪" tagList="{{tag1}}"></tag>
+</block>
+<block wx:if="{{tag2.length > 0}}">
+  <tag sort="类型" tagList="{{tag2}}"></tag>
+</block>
+<block wx:if="{{tag3.length > 0}}">
+  <tag sort="语言" tagList="{{tag3}}"></tag>
+</block>
+<round-background height="{{bgHeight}}" top="560" height="500"></round-background>
 <view class="recommend-list">
   <block wx:for="{{audioList}}" wx:key="id">
     <audio-bar itemData="{{item}}" bind:shareAudio="handleShareAudio"></audio-bar>

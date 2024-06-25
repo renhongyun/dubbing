@@ -1,5 +1,5 @@
 <view class="box">
-  <view class="{{itemData.isRecommand ? 'recommandBox' : 'notShow'}}">
+  <view class="{{itemData.isRecommend ? 'recommandBox' : 'notShow'}}">
     <image src="../../assets/img/recommand.png" mode="" class="recommand"/>
   </view>
   <view class="info">

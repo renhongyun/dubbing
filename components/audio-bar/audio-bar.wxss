@@ -29,13 +29,13 @@
   width: 80rpx;
   height: 80rpx;
   position: relative;
-  right: 16rpx;
-  bottom: 10rpx;
+  right: 32rpx;
+  top: 5rpx;
 }
 .box .buttons .share {
-  width: 110rpx;
-  height: 110rpx;
-  position: relative;
+  width: 70rpx;
+  height: 70rpx;
+  /* position: relative; */
   top: 6rpx;
   left: 8rpx;
 }
