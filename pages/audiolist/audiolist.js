@@ -1,5 +1,6 @@
 import { getAudioList } from "../../services/audio";
 import { getAllTags } from "../../services/tags";
+import { searchAuthor, getAuthorList } from "../../services/author"
 
 Page({
   data: {
@@ -9,6 +10,7 @@ Page({
     tag1: [],
     tag2: [],
     tag3: [],
+    authorList: []
   },
 
   onLoad(options) {
@@ -19,7 +21,15 @@ Page({
       const { id } = options;
       this.fetchAudios(id);
       this.fetchTagsByCategoryId(id);
+      this.fetchAuthor()
     }
+  },
+
+  async fetchAuthor() {
+    const res = await getAuthorList()
+    this.setData({
+      authorList: res.data
+    })
   },
 
   async fetchAudios(id) {

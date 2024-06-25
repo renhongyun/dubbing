@@ -18,7 +18,6 @@ Page({
     const videoDetails = videoList.find(video => video.url === videoUrl);
 
     if (videoDetails) {
-      console.log("find");
       this.setData({
         videoUrl: videoDetails.url,
         videoName: videoDetails.name,
@@ -27,13 +26,12 @@ Page({
         videoList: videoList
       });
     }
-    console.log("ll",this.data.videoList);
   },
 
   onVideoItemTap(e) {
     const { item } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(item.url)}`,
+      url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(item.url)}`
     });
   }
 });

@@ -1,7 +1,4 @@
-/* pages/audiolist/audiolist.wxss */.icon {
-  font-size: 50px;
-}
-.recommend-list {
+/* pages/detail-author/detail-author.wxss */.recommend-list {
   /* position: relative; */
   /* top: 40px; */
   padding: 50rpx 0;

@@ -6,19 +6,13 @@ Component({
       value: {}
     }
   },
-
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 组件的方法列表
-   */
+  data: {},
   methods: {
-
+    onTap() {
+      const { itemData } = this.properties;
+      wx.navigateTo({
+        url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(itemData.url)}`
+      });
+    }
   }
-})
+});

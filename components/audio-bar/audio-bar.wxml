@@ -1,18 +1,21 @@
+<!-- components/audio-bar/audio-bar.wxml -->
 <view class="box">
   <view class="{{itemData.isRecommend ? 'recommandBox' : 'notShow'}}">
     <image src="../../assets/img/recommand.png" mode="" class="recommand"/>
   </view>
   <view class="info">
     <view class="title">
-      {{itemData.dubbingActorId}}-{{itemData.name}}
+      <block wx:if="{{itemData.dubbingActorName}}">
+        {{itemData.dubbingActorName}} - 
+      </block>  
+      {{itemData.name}}
     </view>
-    <view class="more">
+    <view class="more" bindtap="viewOtherSamples">
       点击查看此老师其他样音
     </view>
   </view>
   <view class="buttons">
     <image src="../../assets/img/{{isPlaying ? 'pause' : 'play'}}.png" mode="" class="play" bindtap="togglePlay"/>
-    <!-- <slider min="0" max="{{duration}}" value="{{currentTime}}" bindchange="onSliderChange"/> -->
     <image src="../../assets/img/share.png" mode="" class="share" bindtap="onShare"/>
   </view>
 </view>

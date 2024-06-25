@@ -18,9 +18,9 @@ Component({
     },
 
     onBannerTap(e) {
-      const videoUrl = e.currentTarget.dataset.videoUrl;
+      const { videourl } = e.currentTarget.dataset;
       wx.navigateTo({
-        url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(videoUrl)}`,
+        url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(videourl)}`
       });
     }
   },

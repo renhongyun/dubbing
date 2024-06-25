@@ -1,6 +1,7 @@
+<!-- banner组件 -->
 <swiper circular class="banner" indicator-dots autoplay interval="3000">
-  <block wx:for="{{banners}}" wx:key="id">
-    <swiper-item bindtap="onBannerTap" data-video-url="{{item.videoUrl}}">
+  <block wx:for="{{banners}}" wx:key="targetId">
+    <swiper-item bindtap="onBannerTap" data-videourl="{{item.videoUrl}}">
       <image src="{{item.url}}" class="banner-image" mode="aspectFill"/>
     </swiper-item>
   </block>

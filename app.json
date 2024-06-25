@@ -3,13 +3,11 @@
     "pages/audiolist/audiolist",
     "pages/home/home",
     "pages/videolist/videolist",
-    "pages/index/index",
-    "pages/detail-video/detail-video"
-    
+    "pages/detail-video/detail-video",
+    "pages/detail-author/detail-author"
   ],
   "usingComponents": {
-    "background": "./components/background/background",
-    "round-background": "./components/round-background/round-background"
+    "background": "./components/background/background"
   },
   "window": {
     "navigationBarTextStyle": "white",
@@ -19,5 +17,4 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
-  
 }

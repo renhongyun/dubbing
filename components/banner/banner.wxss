@@ -3,7 +3,7 @@
   margin-bottom: 0;
   width: 88%;
   border-radius: 20rpx;
-  height: 300rpx; /* 可以根据需要调整高度 */
+  height: 300rpx; 
   overflow: hidden;
   position: relative;
 }

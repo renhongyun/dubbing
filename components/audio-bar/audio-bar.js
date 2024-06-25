@@ -1,3 +1,6 @@
+// components/audio-bar/audio-bar.js
+import { getAuthorList } from "../../services/author"
+
 Component({
   properties: {
     itemData: {
@@ -9,7 +12,8 @@ Component({
     isPlaying: false,
     audioContext: null,
     currentTime: 0,
-    duration: 0
+    duration: 0,
+    authorList: []
   },
   methods: {
     onLoad() {
@@ -36,6 +40,7 @@ Component({
           duration: this.data.audioContext.duration
         });
       });
+      this.fetchAuthor();
     },
     togglePlay() {
       if (this.data.isPlaying) {
@@ -61,11 +66,33 @@ Component({
         isPlaying: false
       });
     },
+    async fetchAuthor() {
+      const res = await getAuthorList();
+      this.setData({
+        authorList: res.data
+      }, this.updateDubbingActorName);  // Update dubbing actor name after author list is set
+    },
+    updateDubbingActorName() {
+      const { authorList } = this.data;
+      const { dubbingActorId } = this.properties.itemData;
+      const author = authorList.find(author => author.id === dubbingActorId);
+      if (author) {
+        this.setData({
+          'itemData.dubbingActorName': author.name
+        });
+      }
+    },
     onSliderChange(e) {
       const value = e.detail.value;
       this.data.audioContext.seek(value);
       this.setData({
         currentTime: value
+      });
+    },
+    viewOtherSamples() {
+      const { dubbingActorId } = this.properties.itemData;
+      wx.navigateTo({
+        url: `/pages/detail-author/detail-author?dubbingActorId=${dubbingActorId}`
       });
     }
   },
