@@ -1,11 +1,9 @@
-/* pages/audiolist/audiolist.wxss */.icon {
-  font-size: 50px;
-}
+/* pages/detail-tag/detail-tag.wxss */
 .recommend-list {
   /* position: relative; */
   /* top: 40px; */
   padding: 50rpx 0;
-  padding-bottom: 80rpx;
+  padding-bottom: 230rpx;
   border-radius: 40rpx;
   background-color: #f7f6fb;
   width: 100%;

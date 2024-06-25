@@ -19,14 +19,15 @@
     </block>
   </view>
   <view class="tag-container">
-    <block wx:for="{{categoryTags}}">
-      <view class="bar-box">
-        <block wx:for="{{item.tags}}" wx:key="id">
-          <view class="bar" bindtap="navigateToAudioListWithTag" data-type="{{item.type}}" data-tagid="{{item.id}}">
-            {{item.name}}
-          </view>
-        </block>
-      </view>
-    </block>
-  </view>
+  <block wx:for="{{categoryTags}}">
+    <view class="bar-box">
+      <block wx:for="{{item.tags}}" wx:key="id">
+        <view class="bar" bindtap="navigateToDetailTag" data-categoryid="{{item.id}}" data-type="{{item.type}}" data-tagid="{{item.id}}">
+          {{item.name}}
+        </view>
+      </block>
+    </view>
+  </block>
+</view>
+
 </view>

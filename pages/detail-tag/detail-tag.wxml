@@ -1,7 +1,8 @@
 <background></background>
+<banner></banner>
 <view class="tag-box">
-  <tag sort="情绪" tagList="{{tag1}}"></tag>
-  <tag sort="类型" tagList="{{tag2}}"></tag>
+  <tag sort="性别" tagList="{{sex}}" bind:tagClick="onTagClick"></tag>
+  <tag sort="类型" tagList="{{tag2}}" bind:tagClick="onTagClick"></tag>
 </view>
 <view class="recommend-list">
   <block wx:for="{{audioList}}" wx:key="id">

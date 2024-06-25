@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/videolist/videolist",
     "pages/detail-video/detail-video",
-    "pages/detail-author/detail-author"
+    "pages/detail-author/detail-author",
+    "pages/detail-tag/detail-tag"
   ],
   "usingComponents": {
     "background": "./components/background/background"

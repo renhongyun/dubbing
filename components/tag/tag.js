@@ -1,9 +1,5 @@
 // components/tag/tag.js
 Component({
-
-  /**
-   * 组件的属性列表
-   */
   properties: {
     tagList: {
       type: Array,
@@ -11,21 +7,22 @@ Component({
     },
     sort: {
       type: String,
-      value:""
+      value: ""
     }
   },
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
-
+    onTagClick(e) {
+      const { id, sort } = e.currentTarget.dataset;
+      const tagList = this.data.tagList.map(tag => {
+        if (tag.id === id) {
+          tag.selected = !tag.selected;
+        } else if (tag.selected) {
+          tag.selected = false; // 同一类的不能同时选中
+        }
+        return tag;
+      });
+      this.setData({ tagList });
+      this.triggerEvent('tagClick', { id, sort, selected: tagList.find(tag => tag.id === id).selected });
+    }
   }
-})
+});

@@ -2,6 +2,6 @@
   "usingComponents": {
     "banner": "/components/banner/banner",
     "category-bar": "/components/category-bar/category-bar"
-  }
-
+  },
+"navigationBarTitleText": "主页"
 }

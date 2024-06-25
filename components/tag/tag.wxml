@@ -1,14 +1,18 @@
+<!-- components/tag/tag.wxml -->
 <view class="wrapper">
-<!-- <block wx:if="{{tagList}}"> -->
-  <view class="sort" >
+  <view class="sort">
     {{sort}}：
   </view>
-<!-- </block> -->
   <view class="tags-container">
-  <block wx:for="{{tagList}}">
-    <view class="tags">
-      {{item.name}}
-    </view>
-  </block>
-</view>
+    <block wx:for="{{tagList}}" wx:key="id">
+      <view 
+        class="tags {{item.selected ? 'selected' : ''}}" 
+        bindtap="onTagClick" 
+        data-id="{{item.id}}" 
+        data-sort="{{sort}}"
+      >
+        {{item.name}}
+      </view>
+    </block>
+  </view>
 </view>

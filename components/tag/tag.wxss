@@ -26,3 +26,7 @@
   flex-wrap: wrap;
 
 }
+.selected {
+  background-color: #fff; 
+  color: #ffcc00;
+}

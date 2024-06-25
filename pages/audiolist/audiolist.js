@@ -1,6 +1,6 @@
+// pages/audiolist/audiolist.js
 import { getAudioList } from "../../services/audio";
 import { getAllTags } from "../../services/tags";
-import { searchAuthor, getAuthorList } from "../../services/author"
 
 Page({
   data: {
@@ -10,7 +10,12 @@ Page({
     tag1: [],
     tag2: [],
     tag3: [],
-    authorList: []
+    authorList: [],
+    filters: { categoryId: 1 }, // 默认的分类 ID
+    sex: [
+      { id: 1, name: "男声", selected: false },
+      { id: 0, name: "女声", selected: false }
+    ]
   },
 
   onLoad(options) {
@@ -19,65 +24,56 @@ Page({
       this.fetchAudiosByTag(type, tagId);
     } else {
       const { id } = options;
+      this.setData({ filters: { categoryId: id } });
       this.fetchAudios(id);
       this.fetchTagsByCategoryId(id);
-      this.fetchAuthor()
     }
   },
 
-  async fetchAuthor() {
-    const res = await getAuthorList()
-    this.setData({
-      authorList: res.data
-    })
-  },
+ 
 
   async fetchAudios(id) {
     console.log(id);
-    if (id == 1) {
-      const res = await getAudioList({ categoryId: 1 });
-      this.setData({
-        audioList: res.data,
-      });
-    } else {
-      const res = await getAudioList({ categoryId: 2 });
-      this.setData({
-        audioList: res.data,
-      });
-    }
-  },
-
-  async fetchAudiosByTag(type, tagId) {
-    let res;
-    if (type == 0) {
-      res = await getAudioList({ emotionTagId: tagId });
-
-      // 获取与当前选定情感标签相关的其他标签
-      const response1 = await getAllTags(0);
-      const filteredTag1 = response1.data.filter(tag => tag.id == tagId);
-      this.setData({
-        tag1: filteredTag1,
-      });
-
-      const response2 = await getAllTags(1);
-      this.setData({
-        tag2: response2.data,
-      });
-
-    } else if (type == 2) {
-      res = await getAudioList({ languageTagId: tagId });
-
-      // 获取与当前选定语言标签相关的其他标签
-      const response3 = await getAllTags(2);
-      const filteredTag3 = response3.data.filter(tag => tag.id == tagId);
-      this.setData({
-        tag3: filteredTag3,
-      });
-    }
+    const res = await getAudioList({ categoryId: id });
     this.setData({
       audioList: res.data,
     });
   },
+
+  // async fetchAudiosByTag(type, tagId) {
+  //   let res;
+  //   let filters = { ...this.data.filters };
+  //   if (type == 0) {
+  //     res = await getAudioList({ ...filters, emotionTagId: tagId });
+  //     const response1 = await getAllTags(0);
+  //     const filteredTag1 = response1.data.map(tag => ({
+  //       ...tag,
+  //       selected: tag.id === tagId
+  //     }));
+  //     this.setData({
+  //       tag1: filteredTag1,
+  //     });
+
+  //     const response2 = await getAllTags(1);
+  //     this.setData({
+  //       tag2: response2.data,
+  //     });
+
+  //   } else if (type == 2) {
+  //     res = await getAudioList({ ...filters, languageTagId: tagId });
+  //     const response3 = await getAllTags(2);
+  //     const filteredTag3 = response3.data.map(tag => ({
+  //       ...tag,
+  //       selected: tag.id === tagId
+  //     }));
+  //     this.setData({
+  //       tag3: filteredTag3,
+  //     });
+  //   }
+  //   this.setData({
+  //     audioList: res.data,
+  //   });
+  // },
 
   async fetchTagsByCategoryId(id) {
     if (id == 1) {
@@ -89,12 +85,52 @@ Page({
       this.setData({
         tag2: response2.data,
       });
+      wx.setNavigationBarTitle({
+        title: "中文配音"
+      });
     } else {
       const response3 = await getAllTags(2);
       this.setData({
         tag3: response3.data,
       });
+      wx.setNavigationBarTitle({
+        title: "外语配音"
+      });
     }
+  },
+
+  async onTagClick(e) {
+    const { id, sort, selected } = e.detail;
+    let filters = { ...this.data.filters };
+
+    if (selected) {
+      if (sort === '情绪') {
+        filters.emotionTagId = id;
+      } else if (sort === '类型') {
+        filters.categoryTagId = id;
+      } else if (sort === '语言') {
+        filters.languageTagId = id;
+      } else if (sort === '性别') {
+        filters.sex = id;
+      }
+    } else {
+      if (sort === '情绪') {
+        delete filters.emotionTagId;
+      } else if (sort === '类型') {
+        delete filters.categoryTagId;
+      } else if (sort === '语言') {
+        delete filters.languageTagId;
+      } else if (sort === '性别') {
+        delete filters.sex;
+      }
+    }
+
+    this.setData({ filters });
+
+    const res = await getAudioList(filters);
+    this.setData({
+      audioList: res.data,
+    });
   },
 
   handleShareAudio(e) {

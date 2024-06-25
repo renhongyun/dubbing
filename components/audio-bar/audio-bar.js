@@ -70,7 +70,7 @@ Component({
       const res = await getAuthorList();
       this.setData({
         authorList: res.data
-      }, this.updateDubbingActorName);  // Update dubbing actor name after author list is set
+      }, this.updateDubbingActorName);  
     },
     updateDubbingActorName() {
       const { authorList } = this.data;

@@ -1,17 +1,18 @@
+<!-- pages/audiolist/audiolist.wxml -->
 <background></background>
 <banner></banner>
 <view class="tag-box">
+  <tag sort="性别" tagList="{{sex}}" bind:tagClick="onTagClick"></tag>
   <block wx:if="{{tag1.length > 0}}">
-  <tag sort="情绪" tagList="{{tag1}}"></tag>
-</block>
-<block wx:if="{{tag2.length > 0}}">
-  <tag sort="类型" tagList="{{tag2}}"></tag>
-</block>
-<block wx:if="{{tag3.length > 0}}">
-  <tag sort="语言" tagList="{{tag3}}"></tag>
-</block>
+    <tag sort="情绪" tagList="{{tag1}}" bind:tagClick="onTagClick"></tag>
+  </block>
+  <block wx:if="{{tag2.length > 0}}">
+    <tag sort="类型" tagList="{{tag2}}" bind:tagClick="onTagClick"></tag>
+  </block>
+  <block wx:if="{{tag3.length > 0}}">
+    <tag sort="语言" tagList="{{tag3}}" bind:tagClick="onTagClick"></tag>
+  </block>
 </view>
-
 <view class="recommend-list">
   <block wx:for="{{audioList}}" wx:key="id">
     <audio-bar itemData="{{item}}" bind:shareAudio="handleShareAudio"></audio-bar>
