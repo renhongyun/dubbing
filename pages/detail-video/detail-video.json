@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "author-bar": "/components/author-bar/author-bar"
+    "author-bar": "/components/author-bar/author-bar",
+    "video-item":"/components/video-item/video-item"
   },
   "navigationBarTitleText": "视频播放"
 }

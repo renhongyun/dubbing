@@ -3,9 +3,9 @@
   <view class="album">
     <image src="{{itemData.cover}}" mode="" class="image" mode="widthFix"/>
     <view class="info">
-      <view class="count">{{fmt.formatCount(itemData.playCount)}}</view>
-      <view class="duration">{{fmt.formatTime(itemData.mv.videos[0].duration)}}</view>
+      <view class="count"></view>
+      <view class="duration"></view>
     </view>
   </view>
-  <view class="content">{{itemData.name}} - {{itemData.artistName}}</view>
+  <view class="content">{{itemData.name}}</view>
 </view>

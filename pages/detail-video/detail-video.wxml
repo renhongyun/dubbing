@@ -1,10 +1,18 @@
-<!-- <view>{{id}}</view> -->
-<video src="{{mvUrl}}" class="video" danmu-list="{{danmuList}}" referrer-policy="origin"></video>
-
-<view class="title">{{mvInfo.name}}</view>
-<author-bar name="{{mvInfo.artistName}}"></author-bar>
-
-<!-- <view class="related-video">
-  <block wx:for="mvRelated" wx:key>
-  </block>
+<!-- pages/detail-video/detail-video.wxml -->
+<view>{{videoId}}</view>
+<video src="{{videoUrl}}" class="video" controls referrer-policy="origin"></video>
+<view class="title">{{videoName}}</view>
+<!-- <view class="info">
+  <view class="label">语言ID:</view> <view>{{languageId}}</view>
 </view> -->
+<!-- <view class="info">
+  <view class="label">性别:</view> <view>{{sex === 1 ? '男' : '女'}}</view>
+</view> -->
+
+
+  <view class="video-list" style="top: 5px">
+    <block wx:for="{{videoList}}" wx:key="id">
+      <video-item class="item" itemData="{{item}}" bind:tap="onVideoItemTap" data-item="{{item}}"/>
+    </block>
+  </view>
+
