@@ -10,9 +10,9 @@ Component({
   methods: {
     onTap() {
       const { itemData } = this.properties;
-      wx.navigateTo({
-        url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(itemData.url)}`
-      });
+      // wx.navigateTo({
+      //   url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(itemData.url)}`
+      // });
     }
   }
 });

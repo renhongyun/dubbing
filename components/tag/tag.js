@@ -3,17 +3,25 @@ Component({
   properties: {
     tagList: {
       type: Array,
-      value: []
+      value: [],
+      observer(newVal) {
+        this.setData({
+          localTagList: [...newVal]
+        });
+      }
     },
     sort: {
       type: String,
       value: ""
     }
   },
+  data: {
+    localTagList: []
+  },
   methods: {
     onTagClick(e) {
       const { id, sort } = e.currentTarget.dataset;
-      const tagList = this.data.tagList.map(tag => {
+      const localTagList = this.data.localTagList.map(tag => {
         if (tag.id === id) {
           tag.selected = !tag.selected;
         } else if (tag.selected) {
@@ -21,8 +29,15 @@ Component({
         }
         return tag;
       });
-      this.setData({ tagList });
-      this.triggerEvent('tagClick', { id, sort, selected: tagList.find(tag => tag.id === id).selected });
+      this.setData({ localTagList });
+      this.triggerEvent('tagClick', { id, sort, selected: localTagList.find(tag => tag.id === id).selected });
+    }
+  },
+  lifetimes: {
+    attached() {
+      this.setData({
+        localTagList: [...this.data.tagList]
+      });
     }
   }
 });

@@ -4,18 +4,17 @@ import { getAllTags } from "../../services/tags";
 
 Page({
   data: {
-    banners: [],
     audioList: [],
     shareData: null,
     tag1: [],
     tag2: [],
     tag3: [],
-    authorList: [],
     filters: { categoryId: 1 }, // 默认的分类
     sex: [
       { id: 1, name: "男声", selected: false },
       { id: 0, name: "女声", selected: false }
-    ]
+    ],
+    currentPlayingId: null,
   },
 
   onLoad(options) {
@@ -28,52 +27,15 @@ Page({
       this.fetchAudios(id);
       this.fetchTagsByCategoryId(id);
     }
+    console.log(this.data.filters);
   },
 
- 
-
   async fetchAudios(id) {
-    console.log(id);
     const res = await getAudioList({ categoryId: id });
     this.setData({
       audioList: res.data,
     });
   },
-
-  // async fetchAudiosByTag(type, tagId) {
-  //   let res;
-  //   let filters = { ...this.data.filters };
-  //   if (type == 0) {
-  //     res = await getAudioList({ ...filters, emotionTagId: tagId });
-  //     const response1 = await getAllTags(0);
-  //     const filteredTag1 = response1.data.map(tag => ({
-  //       ...tag,
-  //       selected: tag.id === tagId
-  //     }));
-  //     this.setData({
-  //       tag1: filteredTag1,
-  //     });
-
-  //     const response2 = await getAllTags(1);
-  //     this.setData({
-  //       tag2: response2.data,
-  //     });
-
-  //   } else if (type == 2) {
-  //     res = await getAudioList({ ...filters, languageTagId: tagId });
-  //     const response3 = await getAllTags(2);
-  //     const filteredTag3 = response3.data.map(tag => ({
-  //       ...tag,
-  //       selected: tag.id === tagId
-  //     }));
-  //     this.setData({
-  //       tag3: filteredTag3,
-  //     });
-  //   }
-  //   this.setData({
-  //     audioList: res.data,
-  //   });
-  // },
 
   async fetchTagsByCategoryId(id) {
     if (id == 1) {
@@ -85,21 +47,26 @@ Page({
       this.setData({
         tag2: response2.data,
       });
+      const pageTitle = "中文配音";
       wx.setNavigationBarTitle({
-        title: "中文配音"
+        title: pageTitle
       });
+      wx.setStorageSync('currentPageTitle', pageTitle);
     } else {
       const response3 = await getAllTags(2);
       this.setData({
         tag3: response3.data,
       });
+      const pageTitle = "外语配音";
       wx.setNavigationBarTitle({
-        title: "外语配音"
+        title: pageTitle
       });
+      wx.setStorageSync('currentPageTitle', pageTitle);
     }
   },
 
   async onTagClick(e) {
+    console.log(e);
     const { id, sort, selected } = e.detail;
     let filters = { ...this.data.filters };
 
@@ -126,18 +93,17 @@ Page({
     }
 
     this.setData({ filters });
-
+    console.log("筛选条件", this.data.filters);
     const res = await getAudioList(filters);
     this.setData({
       audioList: res.data,
     });
+    console.log("传递音频列表", this.data.audioList);
   },
 
   handleShareAudio(e) {
-    console.log(e);
     const shareData = e.detail;
     this.setData({ shareData });
-    console.log("done");
     wx.showShareMenu({
       withShareTicket: true,
       menus: ["shareAppMessage", "shareTimeline"],
@@ -146,33 +112,83 @@ Page({
   },
 
   onShareAppMessage() {
-    console.log("fenxiang");
-    if (this.data.shareData) {
-      const { name, dubbingActorId, url } = this.data.shareData;
+    const shareData = wx.getStorageSync('shareData');
+    const pageTitle = wx.getStorageSync('currentPageTitle') || "分享标题";
+    console.log(shareData);
+    if (shareData) {
+      const { name, url } = shareData;
       return {
-        title: `${dubbingActorId} - ${name}`,
+        title: `${pageTitle} - ${name}`,
         path: `/pages/audiolist/audiolist?audioUrl=${url}`,
       };
     }
     return {
-      title: "分享标题",
+      title: pageTitle,
       path: "/pages/audiolist/audiolist",
     };
   },
 
   onShareTimeline() {
-    if (this.data.shareData) {
-      const { name, dubbingActorId, url } = this.data.shareData;
+    const shareData = wx.getStorageSync('shareData');
+    const pageTitle = wx.getStorageSync('currentPageTitle') || "分享标题";
+    if (shareData) {
+      const { title, url } = shareData;
       return {
-        title: `${dubbingActorId} - ${name}`,
+        title: `${pageTitle} - ${title}`,
         query: {
           audioUrl: url,
         },
       };
     }
     return {
-      title: "分享标题",
+      title: pageTitle,
       query: {},
     };
   },
+  handlePlayAudio(e) {
+    const playingAudio = e.detail;
+    const { id } = playingAudio;
+    
+    // Check if the clicked audio is the currently playing one
+    if (this.data.currentPlayingId === id) {
+      this.setData({ 
+        audioList: this.data.audioList.map(audio => {
+          if (audio.id === id) {
+            audio.isPlayingGlobal = true;
+          }
+          return audio;
+        }),
+        currentPlayingId: id
+      });
+    } else {
+      // Pause the currently playing audio
+      this.setData({
+        audioList: this.data.audioList.map(audio => {
+          if (audio.id === this.data.currentPlayingId) {
+            audio.isPlayingGlobal = false;
+          }
+          return audio;
+        }),
+        currentPlayingId: id
+      });
+
+      this.setData({
+        audioList: this.data.audioList.map(audio => {
+          if (audio.id === id) {
+            audio.isPlayingGlobal = true;
+          }
+          return audio;
+        })
+      });
+    }
+  },
+
+  onUnload() {
+    const audioList = this.data.audioList.map(audio => {
+      audio.isPlayingGlobal = false;
+      return audio;
+    });
+    this.setData({ audioList });
+  }
+
 });

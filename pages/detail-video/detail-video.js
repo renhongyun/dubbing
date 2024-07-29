@@ -30,6 +30,7 @@ Page({
 
   onVideoItemTap(e) {
     const { item } = e.currentTarget.dataset;
+    console.log("跳转");
     wx.navigateTo({
       url: `/pages/detail-video/detail-video?videoUrl=${encodeURIComponent(item.url)}`
     });

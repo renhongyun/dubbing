@@ -1,11 +1,20 @@
+<!-- pages/detail-tag/detail-tag.wxml -->
 <background></background>
 <banner></banner>
 <view class="tag-box">
   <tag sort="性别" tagList="{{sex}}" bind:tagClick="onTagClick"></tag>
-  <tag sort="类型" tagList="{{tag2}}" bind:tagClick="onTagClick"></tag>
+  <tag wx:if="{{shouldLoadTag2}}" sort="类型" tagList="{{tag2}}" bind:tagClick="onTagClick"></tag>
 </view>
 <view class="recommend-list">
   <block wx:for="{{audioList}}" wx:key="id">
-    <audio-bar itemData="{{item}}" bind:shareAudio="handleShareAudio"></audio-bar>
+    <audio-bar 
+  itemData="{{item}}" 
+  isPlayingGlobal="{{item.id === currentPlayingId}}" 
+  bind:shareAudio="handleShareAudio" 
+  bind:playAudio="handlePlayAudio">
+</audio-bar>
+
+
   </block>
 </view>
+

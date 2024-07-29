@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/audiolist/audiolist",
     "pages/home/home",
-    "pages/videolist/videolist",
+    "pages/audiolist/audiolist",
     "pages/detail-video/detail-video",
     "pages/detail-author/detail-author",
     "pages/detail-tag/detail-tag"

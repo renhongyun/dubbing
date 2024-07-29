@@ -1,9 +1,11 @@
+// pages/home/home.js
 import { getCategories, getCategoriesAll } from "../../services/home";
 
 Page({
   data: {
     categoryList: [],
-    categoryTags: []
+    categoryTags: [],
+    wxNumber: '111111'  // 设置默认的微信号
   },
 
   onLoad(options) {
@@ -34,5 +36,5 @@ Page({
     wx.navigateTo({
       url: `/pages/detail-tag/detail-tag?type=${type}&tagId=${tagid}`,
     });
-  }
+  },
 });

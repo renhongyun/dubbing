@@ -1,6 +1,7 @@
 /* pages/home/home.wxss */
 .box {
   padding: 0 40rpx;
+  padding-bottom: 40rpx;
 }
 page {
   background-color: #f7f6fb;

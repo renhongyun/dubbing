@@ -1,7 +1,7 @@
 // pages/detail-author/detail-author.js
 import { getAudioList } from "../../services/audio";
 import { getAllTags } from "../../services/tags";
-import { getAuthorList } from "../../services/author"
+import { getAuthorList } from "../../services/author";
 
 Page({
   data: {
@@ -10,7 +10,8 @@ Page({
     tag1: [],
     tag2: [],
     authorList: [],
-    dubbingActorId: null
+    dubbingActorId: null,
+    filters: {}
   },
 
   onLoad(options) {
@@ -26,6 +27,7 @@ Page({
     this.setData({
       authorList: res.data
     });
+    this.updateGlobalTitle();
   },
 
   async fetchAudios(dubbingActorId) {
@@ -40,19 +42,15 @@ Page({
     this.setData({
       tag1: response1.data
     });
-    console.log("tag1",this.data.tag1);
     const response2 = await getAllTags(1);
     this.setData({
       tag2: response2.data
     });
-    console.log("tag2",this.data.tag2);
   },
 
   handleShareAudio(e) {
-    console.log(e);
     const shareData = e.detail;
     this.setData({ shareData });
-    console.log("done");
     wx.showShareMenu({
       withShareTicket: true,
       menus: ["shareAppMessage", "shareTimeline"]
@@ -61,7 +59,6 @@ Page({
   },
 
   onShareAppMessage() {
-    console.log("fenxiang");
     if (this.data.shareData) {
       const { name, dubbingActorId, url } = this.data.shareData;
       return {
@@ -89,5 +86,39 @@ Page({
       title: "分享标题",
       query: {}
     };
+  },
+
+  updateGlobalTitle() {
+    const author = this.data.authorList.find(author => author.id === parseInt(this.data.dubbingActorId));
+    if (author) {
+      wx.setNavigationBarTitle({
+        title: author.name
+      });
+    } else {
+      wx.setNavigationBarTitle({
+        title: '默认标题'
+      });
+    }
+  },
+
+  async onTagClick(e) {
+    const { id, sort, selected } = e.detail;
+    let filters = { ...this.data.filters };
+
+    if (sort === '情绪') {
+      filters.emotionTagId = selected ? id : null;
+    } else if (sort === '类型') {
+      filters.categoryTagId = selected ? id : null;
+    }
+
+    
+    filters.dubbingActorId = this.data.dubbingActorId;
+
+    this.setData({ filters });
+
+    const res = await getAudioList(filters);
+    this.setData({
+      audioList: res.data
+    });
   }
 });

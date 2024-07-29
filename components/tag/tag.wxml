@@ -4,7 +4,7 @@
     {{sort}}：
   </view>
   <view class="tags-container">
-    <block wx:for="{{tagList}}" wx:key="id">
+    <block wx:for="{{localTagList}}" wx:key="id">
       <view 
         class="tags {{item.selected ? 'selected' : ''}}" 
         bindtap="onTagClick" 

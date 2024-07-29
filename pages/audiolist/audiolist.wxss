@@ -6,9 +6,10 @@
   /* top: 40px; */
   padding: 50rpx 0;
   padding-bottom: 80rpx;
-  border-radius: 40rpx;
+  border-radius: 40rpx 40rpx 0 0;
   background-color: #f7f6fb;
   width: 100%;
+  flex:1;
 }
 .tag-box {
   margin: 37rpx 0;
@@ -16,4 +17,7 @@
 }
 page {
   background-color: #f7f6fb;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

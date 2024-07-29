@@ -6,3 +6,8 @@ export function getAudioList(audioData) {
     data: audioData
   })
 }
+export function searchAuthor(id) {
+  return hyRequest.get({
+    url: `/dubbingActor/get/${id}`
+  })
+}
