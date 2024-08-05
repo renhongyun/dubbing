@@ -149,7 +149,6 @@ Page({
     const playingAudio = e.detail;
     const { id } = playingAudio;
     
-    // Check if the clicked audio is the currently playing one
     if (this.data.currentPlayingId === id) {
       this.setData({ 
         audioList: this.data.audioList.map(audio => {
@@ -161,7 +160,6 @@ Page({
         currentPlayingId: id
       });
     } else {
-      // Pause the currently playing audio
       this.setData({
         audioList: this.data.audioList.map(audio => {
           if (audio.id === this.data.currentPlayingId) {
