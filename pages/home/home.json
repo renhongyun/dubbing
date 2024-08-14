@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "banner": "/components/banner/banner"
+    "banner": "/components/banner/banner",
+    "home-header": "/components/home-header/home-header"
   },
 "navigationBarTitleText": "主页"
 }

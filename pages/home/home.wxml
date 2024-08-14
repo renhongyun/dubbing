@@ -1,20 +1,21 @@
+<home-header></home-header>
 <banner></banner>
 <view class="box">
   <view class="wx">
     <image src="../../assets/img/wxicon.png" mode="" class="wxicon" />
-    <text selectable>wx:111111</text>
+    <text selectable>wx:{{ wxNumber }}</text>
     <text class="tip">（长按复制）</text>
   </view>
   <view class="cover-box">
     <block wx:for="{{categoryList}}" wx:key="id">
       <view class="image-box" bindtap="navigateToAudioList" data-id="{{item.id}}">
         <image src="{{item.img}}" mode="widthFix" class="cover" />
-        <view class="title">
+        <!-- <view class="title">
           {{item.name}}
         </view>
         <view class="play">
           <image src="../../assets/img/play1.png" class="play-icon"></image>
-        </view>
+        </view> -->
       </view>
     </block>
   </view>

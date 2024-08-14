@@ -1,0 +1,17 @@
+/* components/home-header/home-header.wxss */
+.wrapper {
+  padding: 0 45rpx;
+  padding-top: 32rpx;
+  display: flex;
+  justify-content: left;
+}
+.logo {
+  width: 72rpx;
+  height: 72rpx;
+}
+.title {
+  margin-left: 20rpx;
+  /* background-color: red; */
+  line-height: 72rpx;
+  color: #f49c10;
+}

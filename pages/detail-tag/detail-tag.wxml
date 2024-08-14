@@ -13,8 +13,6 @@
   bind:shareAudio="handleShareAudio" 
   bind:playAudio="handlePlayAudio">
 </audio-bar>
-
-
   </block>
 </view>
 

@@ -1,11 +1,3 @@
-<!-- <view>{{videoId}}</view>
-<video src="{{videoUrl}}" class="video" controls referrer-policy="origin"></video>
-<view class="title">{{videoName}}</view>
-<view class="video-list" style="top: 5px">
-  <block wx:for="{{videoList}}" wx:key="id">
-    <video-item class="item" itemData="{{item}}" bindtap="onVideoItemTap" data-item="{{item}}"/>
-  </block>
-</view> -->
 <view>{{videoId}}</view>
 <video src="{{videoUrl}}" class="video" controls referrer-policy="origin"></video>
 <view class="title">{{videoName}}</view>

@@ -1,0 +1,4 @@
+<view class="wrapper">
+  <image class="logo" src="../../assets/img/logo.png" mode=""/>
+  <view class="title">华韵配音</view>
+</view>

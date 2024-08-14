@@ -5,7 +5,7 @@
   </view>
   <view class="info">
     <view class="title">
-      <block wx:if="{{showAuthorInfo && itemData.dubbingActorId}}">
+      <block wx:if="{{showAuthorInfo && itemData.dubbingActorId && dubbingActorName}}">
         {{dubbingActorName}} - 
       </block>  
       {{itemData.name}}

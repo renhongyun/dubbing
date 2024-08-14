@@ -5,12 +5,29 @@ Page({
   data: {
     categoryList: [],
     categoryTags: [],
-    wxNumber: '111111'  // 设置默认的微信号
+    wxNumber: ''  // 设置默认的微信号
   },
 
   onLoad(options) {
     this.fetchCategories();
     this.fetchCategoriesAll();
+    this.getWxNumber();
+  },
+
+  async getWxNumber() {
+    const that = this;
+    wx.request({
+      url: 'https://www.huayunpy.com/public/config.txt', // 文件链接
+      method: 'GET',
+      responseType: 'text',
+      success(res) {
+        console.log('res: ', res.data);
+        that.setData({ wxNumber: res.data });  // 将文件内容设置为 wxNumber
+      },
+      fail(err) {
+        console.error('获取 config.txt 内容失败:', err);
+      }
+    });
   },
 
   async fetchCategories() {
